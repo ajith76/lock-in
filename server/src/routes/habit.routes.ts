@@ -70,10 +70,11 @@ router.post('/', async (req: AuthRequest, res: Response) => {
 router.put('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const body = updateHabitSchema.parse(req.body);
+    const { id } = req.params;
 
     // Verify ownership
     const existing = await prisma.habit.findFirst({
-      where: { id: req.params['id'], userId: req.userId },
+      where: { id: id as string, userId: req.userId },
     });
 
     if (!existing) {
@@ -82,7 +83,7 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
     }
 
     const habit = await prisma.habit.update({
-      where: { id: req.params['id'] },
+      where: { id: id as string },
       data: {
         ...(body.name !== undefined && { name: body.name }),
         ...(body.order !== undefined && { order: body.order }),
@@ -104,9 +105,11 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
 // ── DELETE /api/habits/:id ──
 router.delete('/:id', async (req: AuthRequest, res: Response) => {
   try {
+    const { id } = req.params;
+
     // Verify ownership
     const existing = await prisma.habit.findFirst({
-      where: { id: req.params['id'], userId: req.userId },
+      where: { id: id as string, userId: req.userId },
     });
 
     if (!existing) {
@@ -114,7 +117,7 @@ router.delete('/:id', async (req: AuthRequest, res: Response) => {
       return;
     }
 
-    await prisma.habit.delete({ where: { id: req.params['id'] } });
+    await prisma.habit.delete({ where: { id: id as string } });
     res.json({ message: 'Habit deleted' });
   } catch (err) {
     console.error('Delete habit error:', err);
