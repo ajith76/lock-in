@@ -120,7 +120,8 @@
 
     &--locked {
       cursor: default;
-      opacity: 0.6;
+      opacity: 0.85; // Increased from 0.6
+      color: var(--text-muted);
     }
 
     &--today {

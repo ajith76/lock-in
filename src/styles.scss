@@ -6,10 +6,10 @@
   --bg-card-hover: #1c1c1c;
   --bg-input: #1a1a1a;
   --border: #222222;
-  --border-light: #2a2a2a;
+  --border-light: #333333;
   --text-primary: #e5e5e5;
-  --text-secondary: #777777;
-  --text-muted: #555555;
+  --text-secondary: #aaaaaa;
+  --text-muted: #888888;
   --accent: #ffffff;
   --accent-dim: #aaaaaa;
   --success: #4ade80;
@@ -92,6 +92,12 @@ input {
   color: inherit;
   outline: none;
   font-size: inherit;
+
+  &:disabled,
+  &[readonly] {
+    color: var(--text-muted);
+    opacity: 0.8;
+  }
 }
 
 /* ===== Utility ===== */
