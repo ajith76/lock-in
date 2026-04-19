@@ -1,59 +1,86 @@
-# LockIn
+# 🔒 Lock In — Full-Stack Habit Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+A minimal, professional, and dark-themed habit tracking dashboard designed to help you stay consistent. Built with a modern Angular frontend and a robust Express/Prisma backend.
 
-## Development server
+![Habit Tracker Preview](https://via.placeholder.com/1200x600.png?text=Lock+In+Habit+Tracker+Dashboard)
 
-To start a local development server, run:
+## 🚀 Key Features
+
+- **Daily Tracking**: Intuitive 31-day calendar grid for visual consistency.
+- **Dynamic Stats**: Real-time completion rates, daily averages, and best streaks.
+- **Analytics**: Visual progress charts using Chart.js.
+- **Secure Auth**: JWT-based authentication with HTTP-only cookies.
+- **Persistent Data**: SQLite database managed via Prisma ORM.
+- **Dark Mode**: Minimalist, high-contrast UI for focused tracking.
+
+## 🛠️ Technology Stack
+
+- **Frontend**: Angular 21 (Signals, Standalone Components, SCSS)
+- **Backend**: Node.js, Express.js, TypeScript
+- **Database**: SQLite with Prisma ORM
+- **Authentication**: JWT (Access & Refresh Tokens)
+- **Styling**: Vanilla CSS/SCSS (Custom Design System)
+
+---
+
+## 🏁 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/ajith76/lock-in.git
+cd lock-in
+```
+
+### 2. Setup the Backend
+The backend handles authentication and data persistence.
 
 ```bash
+cd server
+npm install
+```
+
+**Configure Environment**:
+Create a `.env` file in the `server` folder:
+```env
+DATABASE_URL="file:./dev.db"
+JWT_ACCESS_SECRET="your_access_secret_here"
+JWT_REFRESH_SECRET="your_refresh_secret_here"
+PORT=3000
+```
+
+**Initialize Database**:
+```bash
+npx prisma migrate dev --name init
+```
+
+**Start Backend**:
+```bash
+npm run dev
+```
+The API will be running at `http://localhost:3000`.
+
+### 3. Setup the Frontend
+Open a new terminal window in the root directory.
+
+```bash
+npm install
 ng serve
 ```
+The app will be running at `http://localhost:4200` (or the port specified by Angular CLI).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🔒 Authentication Note
+When you first run the app, you will be redirected to the **Login** page. 
+- Go to `/register` to create your first account.
+- Once registered, you can start adding habits and tracking your progress.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📁 Repository Structure
+- `/src`: Angular frontend source code.
+- `/server`: Express backend, Prisma schema, and API routes.
+- `/server/prisma`: SQLite database file and migration logs.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📄 License
+MIT License. Feel free to use and modify for your own personal growth!
