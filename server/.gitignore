@@ -1,0 +1,14 @@
+# Node.js
+node_modules/
+dist/
+npm-debug.log*
+
+# Environment
+.env
+
+# Database (SQLite)
+prisma/*.db
+prisma/*.db-journal
+
+# Prisma
+/prisma/migrations/

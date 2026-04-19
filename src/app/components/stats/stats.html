@@ -1,0 +1,22 @@
+<section class="stats" id="stats-section">
+  <div class="stats__card" id="stat-total-habits">
+    <span class="stats__label">Total Habits</span>
+    <span class="stats__value">{{ svc.habits().length }}</span>
+  </div>
+  <div class="stats__card" id="stat-completions">
+    <span class="stats__label">Completions</span>
+    <span class="stats__value">{{ svc.totalCompletions() }}</span>
+  </div>
+  <div class="stats__card stats__card--highlight" id="stat-completion-rate">
+    <span class="stats__label">Completion Rate</span>
+    <span class="stats__value">{{ svc.completionRate() }}<span class="stats__unit">%</span></span>
+  </div>
+  <div class="stats__card" id="stat-daily-avg">
+    <span class="stats__label">Daily Average</span>
+    <span class="stats__value">{{ svc.dailyAverage() }}</span>
+  </div>
+  <div class="stats__card" id="stat-best-streak">
+    <span class="stats__label">Best Streak</span>
+    <span class="stats__value">{{ svc.bestStreak() }} <span class="stats__unit">days</span></span>
+  </div>
+</section>

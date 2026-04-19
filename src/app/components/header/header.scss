@@ -1,0 +1,122 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+
+  &__left {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+  }
+
+  &__subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    flex: 2;
+  }
+
+  &__nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+  }
+
+  &__month {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 140px;
+    text-align: center;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__user-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  &__logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      color: var(--danger);
+      background: rgba(248, 113, 113, 0.1);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    &__left {
+      order: 1;
+      flex: none;
+    }
+
+    &__right {
+      order: 2;
+      flex: 1;
+    }
+
+    &__nav {
+      order: 3;
+      width: 100%;
+      flex: none;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+  }
+}

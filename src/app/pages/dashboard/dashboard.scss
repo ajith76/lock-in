@@ -1,0 +1,56 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard {
+  flex: 1;
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+
+  &__stats {
+    width: 100%;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+  }
+
+  &__main {
+    min-width: 0; // prevent grid blowout from table
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__chart {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .dashboard {
+    padding: 20px;
+
+    &__body {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    padding: 16px;
+    gap: 16px;
+  }
+}

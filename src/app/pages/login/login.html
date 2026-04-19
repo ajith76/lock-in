@@ -1,0 +1,56 @@
+<div class="auth-page" id="login-page">
+  <div class="auth-card">
+    <div class="auth-card__header">
+      <h1 class="auth-card__title">Lock In</h1>
+      <p class="auth-card__subtitle">Sign in to your account</p>
+    </div>
+
+    @if (error()) {
+      <div class="auth-card__error" id="login-error">{{ error() }}</div>
+    }
+
+    <form class="auth-form" (submit)="onSubmit($event)">
+      <div class="auth-form__field">
+        <label class="auth-form__label" for="login-email">Email</label>
+        <input
+          class="auth-form__input"
+          id="login-email"
+          type="email"
+          placeholder="you@example.com"
+          [value]="email()"
+          (input)="onEmailInput($event)"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="auth-form__field">
+        <label class="auth-form__label" for="login-password">Password</label>
+        <input
+          class="auth-form__input"
+          id="login-password"
+          type="password"
+          placeholder="••••••••"
+          [value]="password()"
+          (input)="onPasswordInput($event)"
+          required
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button
+        class="auth-form__submit"
+        id="login-submit"
+        type="submit"
+        [disabled]="loading()"
+      >
+        {{ loading() ? 'Signing in...' : 'Sign In' }}
+      </button>
+    </form>
+
+    <p class="auth-card__footer">
+      Don't have an account?
+      <a routerLink="/register" class="auth-card__link" id="go-to-register">Create one</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="auth-page" id="register-page">
+  <div class="auth-card">
+    <div class="auth-card__header">
+      <h1 class="auth-card__title">Lock In</h1>
+      <p class="auth-card__subtitle">Create your account</p>
+    </div>
+
+    @if (error()) {
+      <div class="auth-card__error" id="register-error">{{ error() }}</div>
+    }
+
+    <form class="auth-form" (submit)="onSubmit($event)">
+      <div class="auth-form__field">
+        <label class="auth-form__label" for="register-name">Name</label>
+        <input
+          class="auth-form__input"
+          id="register-name"
+          type="text"
+          placeholder="Your name"
+          [value]="name()"
+          (input)="onNameInput($event)"
+          required
+          autocomplete="name"
+        />
+      </div>
+
+      <div class="auth-form__field">
+        <label class="auth-form__label" for="register-email">Email</label>
+        <input
+          class="auth-form__input"
+          id="register-email"
+          type="email"
+          placeholder="you@example.com"
+          [value]="email()"
+          (input)="onEmailInput($event)"
+          required
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="auth-form__field">
+        <label class="auth-form__label" for="register-password">Password</label>
+        <input
+          class="auth-form__input"
+          id="register-password"
+          type="password"
+          placeholder="Min 6 characters"
+          [value]="password()"
+          (input)="onPasswordInput($event)"
+          required
+          minlength="6"
+          autocomplete="new-password"
+        />
+      </div>
+
+      <button
+        class="auth-form__submit"
+        id="register-submit"
+        type="submit"
+        [disabled]="loading()"
+      >
+        {{ loading() ? 'Creating account...' : 'Create Account' }}
+      </button>
+    </form>
+
+    <p class="auth-card__footer">
+      Already have an account?
+      <a routerLink="/login" class="auth-card__link" id="go-to-login">Sign in</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<section class="grid-section card" id="habit-grid-section">
+  <div class="grid-section__header">
+    <h2 class="grid-section__title">Monthly Tracker</h2>
+    <span class="grid-section__month">{{ svc.monthLabel() }}</span>
+  </div>
+  <div class="grid-wrapper">
+    <table class="grid" id="habit-grid-table">
+      <thead>
+        <tr>
+          <th class="grid__habit-header">Habit</th>
+          @for (day of svc.daysArray(); track day) {
+            <th
+              class="grid__day-header"
+              [class.grid__day-header--today]="day === todayDay()"
+            >{{ day }}</th>
+          }
+          <th class="grid__count-header">Done</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (habit of svc.habits(); track habit.id) {
+          <tr class="grid__row">
+            <td class="grid__habit-name">
+              <span class="grid__habit-label" [title]="habit.name || 'Unnamed'">
+                {{ habit.name || 'Unnamed' }}
+              </span>
+            </td>
+            @for (day of svc.daysArray(); track day) {
+              <td
+                class="grid__cell"
+                [class.grid__cell--today]="day === todayDay()"
+                [class.grid__cell--completed]="isCompleted(habit.id, day)"
+                (click)="toggleDay(habit.id, day)"
+                [attr.id]="'cell-' + habit.id + '-' + day"
+                role="checkbox"
+                [attr.aria-checked]="isCompleted(habit.id, day)"
+                [attr.aria-label]="(habit.name || 'Habit') + ' day ' + day"
+              >
+                <span class="grid__cell-dot"></span>
+              </td>
+            }
+            <td class="grid__count">
+              {{ getHabitCompletionCount(habit.id) }}
+            </td>
+          </tr>
+        } @empty {
+          <tr>
+            <td class="grid__empty" [attr.colspan]="svc.daysArray().length + 2">
+              Add habits to start tracking
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

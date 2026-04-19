@@ -1,0 +1,48 @@
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+
+  &:hover {
+    background: var(--bg-card-hover);
+
+    .habit-item__delete {
+      opacity: 1;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: var(--text-muted);
+    }
+  }
+
+  &__delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    opacity: 0;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+
+    &:hover {
+      color: var(--danger);
+      background: rgba(248, 113, 113, 0.1);
+    }
+  }
+}

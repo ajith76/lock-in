@@ -1,0 +1,25 @@
+<div class="app-shell" id="app-shell">
+  <app-header />
+
+  <main class="dashboard">
+    <!-- Stats Row -->
+    <div class="dashboard__stats">
+      <app-stats />
+    </div>
+
+    <!-- Two Column Layout: Grid + Habit List Sidebar -->
+    <div class="dashboard__body">
+      <div class="dashboard__main">
+        <app-habit-grid />
+      </div>
+      <div class="dashboard__sidebar">
+        <app-habit-list />
+      </div>
+    </div>
+
+    <!-- Chart Full Width Below -->
+    <div class="dashboard__chart">
+      <app-chart />
+    </div>
+  </main>
+</div>
