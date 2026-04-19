@@ -21,7 +21,12 @@ export class HabitGridComponent {
     return this.svc.isCompleted(habitId, day);
   }
 
+  protected isEditable(day: number): boolean {
+    return this.svc.isCurrentMonth() && day === new Date().getDate();
+  }
+
   protected toggleDay(habitId: string, day: number): void {
+    if (!this.isEditable(day)) return;
     this.svc.toggleCompletion(habitId, day);
   }
 

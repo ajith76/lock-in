@@ -30,6 +30,8 @@
                 class="grid__cell"
                 [class.grid__cell--today]="day === todayDay()"
                 [class.grid__cell--completed]="isCompleted(habit.id, day)"
+                [class.grid__cell--editable]="isEditable(day)"
+                [class.grid__cell--locked]="!isEditable(day)"
                 (click)="toggleDay(habit.id, day)"
                 [attr.id]="'cell-' + habit.id + '-' + day"
                 role="checkbox"

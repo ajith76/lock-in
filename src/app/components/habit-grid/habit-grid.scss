@@ -108,15 +108,23 @@
   &__cell {
     padding: 6px 4px;
     border-bottom: 1px solid var(--border);
-    cursor: pointer;
     transition: all var(--transition-fast);
 
-    &--today {
-      background: rgba(255, 255, 255, 0.02);
+    &--editable {
+      cursor: pointer;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
     }
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.05);
+    &--locked {
+      cursor: default;
+      opacity: 0.6;
+    }
+
+    &--today {
+      background: rgba(var(--accent-rgb), 0.05); // Subtle accent background for today's column
     }
   }
 
@@ -134,8 +142,18 @@
       border-color: var(--accent);
     }
 
-    .grid__cell:hover & {
+    .grid__cell--editable:hover & {
       border-color: var(--text-muted);
+    }
+    
+    .grid__cell--locked & {
+      border-style: dotted; // Visual cue that it's unchangeable
+      opacity: 0.5;
+    }
+
+    .grid__cell--locked.grid__cell--completed & {
+      border-style: solid;
+      opacity: 0.8;
     }
   }
 
